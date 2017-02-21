@@ -1,0 +1,124 @@
+﻿@model StripeIntegration.Models.Payment
+
+@{
+	ViewBag.Title = "Make a payment";
+}
+
+<h3 style="color: red;">@ViewBag.Message</h3>
+
+<div class="container" style="margin-top: 25px;">
+	<div style="display:none" id="form-create-order" class="alert alert-danger col-sm-12"></div>
+	@using (Html.BeginRouteForm("PaymentPost", FormMethod.Post, new { @class = "form-horizontal", @role = "form", @id = "form-make-payment"}))
+	{
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-fname" class="col-sm-2 control-label">First Name *</label>
+			<div class="col-sm-10">
+				<input id="input-fname" type="text" class="form-control" name="firstName" value="" placeholder="first name" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-lname" class="col-sm-2 control-label">Last Name *</label>
+			<div class="col-sm-10">
+				<input id="input-lname" type="text" class="form-control" name="lastName" value="" placeholder="last name" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-address-1" class="col-sm-2 control-label">Address Line 1 *</label>
+			<div class="col-sm-10">
+				<input id="input-address-1" type="text" class="form-control" name="addressLine1" value="" placeholder="street" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-address-2" class="col-sm-2 control-label">Address Line 2 *</label>
+			<div class="col-sm-10">
+				<input id="input-address-2" type="text" class="form-control" name="addressLine2" value="" placeholder="unit/apartment" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-city" class="col-sm-2 control-label">City *</label>
+			<div class="col-sm-10">
+				<input id="input-city" type="text" class="form-control" name="city" value="" placeholder="city" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-state" class="col-sm-2 control-label">State *</label>
+			<div class="col-sm-10">
+				<input id="input-state" type="text" class="form-control" name="state" value="" placeholder="state" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-zip" class="col-sm-2 control-label">Zip Code *</label>
+			<div class="col-sm-10">
+				<input id="input-zip" type="text" class="form-control" name="zip" value="" placeholder="zip" required>
+			</div>
+		</div>
+
+		<!-- AMOUNT & CC INFO BELOW -->
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-amount" class="col-sm-2 control-label">Amount (USD) *</label>
+			<div class="col-sm-10">
+				<input id="input-amount" type="text" class="form-control" name="amount" value="" placeholder="USD" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-ccnumber" class="col-sm-2 control-label">Credit Card Number *</label>
+			<div class="col-sm-10">
+				<input id="input-ccnumber" type="text" class="form-control" name="ccnumber" value="" placeholder="credit card number" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-cvc" class="col-sm-2 control-label">CVC *</label>
+			<div class="col-sm-10">
+				<input id="input-cvc" type="text" class="form-control" name="cvc" value="" placeholder="CVC" required>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-expiration-month" class="col-sm-2 control-label">Expiration Month *</label>
+			<div class="col-sm-10">
+				<select id="input-expiration-month" value="2016" name="expirationMonth" class="form-control">
+					<option value="1">Jan</option>
+					<option value="2">Feb</option>
+					<option value="2">Mar</option>
+					<option value="4">Apr</option>
+					<option value="5">May</option>
+					<option value="6">Jun</option>
+					<option value="7">July</option>
+					<option value="8">Aug</option>
+					<option value="9">Sept</option>
+					<option value="10">Oct</option>
+					<option value="11">Nov</option>
+					<option value="12">Dec</option>
+				</select>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" class="form-group">
+			<label for="input-expiration-year" class="col-sm-2 control-label">Expiration Year *</label>
+			<div class="col-sm-10">
+				<select id="input-expiration-year" value="2016" name="expirationYear" class="form-control">
+					<option value="2016">2016</option>
+					<option value="2017">2017</option>
+					<option value="2018">2018</option>
+					<option value="2019">2019</option>
+					<option value="2020">2020</option>
+				</select>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 15px;" style="margin-top:10px" class="form-group">
+			<div class="col-sm-offset-2 col-sm-10 controls">
+				<button type="submit" id="btn-make-payment" href="#" class="btn btn-success">Make Payment</button>
+			</div>
+		</div>
+	}
+</div>
