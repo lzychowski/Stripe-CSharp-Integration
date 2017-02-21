@@ -2,7 +2,8 @@
 
 This VS MVC solution contains a basic HTML form and a set of models and controllers that allows the user to submit a payment to a Stripe account.
 
-A requirement to use this integration is Stripe.net NuGet https://www.nuget.org/packages/Stripe.net/ v6.2.2.
+## Requirements
+- Stripe.net NuGet https://www.nuget.org/packages/Stripe.net/ v6.2.2.
 
 ## Setup
 
